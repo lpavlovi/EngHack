@@ -1,0 +1,8 @@
+.list-of-courses {
+  float: left;
+  height: 24px;
+  position: relative;
+  width: 24px;
+  margin: 1px 4px 0 4px;
+  border-radius: 8px;
+}
