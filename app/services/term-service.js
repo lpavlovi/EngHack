@@ -2,7 +2,7 @@
 angular.module('servicesModule')
   .service('inThisTerm', [function() {
     var masterArray = [];
-
+    var timeSlotsAndStuff = [];
     this.getCourses = function() {
       return masterArray;
     };
@@ -15,5 +15,10 @@ angular.module('servicesModule')
     this.removeCourse = function(index) {
       // removes a single course from the masterArray
       masterArray.splice(index, 1);
+    };
+    this.addTime = function(x) {
+      timeSlotsAndStuff.push(x);
+      $('#calendar').fullCalendar('removeEvents');
+      $('#calendar').fullCalendar('addEventSource', timeSlotsAndStuff );	
     };
   }]);
