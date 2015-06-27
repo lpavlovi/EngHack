@@ -1,0 +1,30 @@
+{
+  "name": "EngHack",
+  "version": "1.0.0",
+  "description": "If this doesn't work out, we'll have to promote Milind's mixtape instead",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/lpavlovi/EngHack"
+  },
+  "author": "Luka Milind",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/lpavlovi/EngHack/issues"
+  },
+  "dependencies": {
+   "bower": "^1.4.0",
+    "grunt": "^0.4.1",
+    "grunt-contrib-jshint": "^0.10.0",
+    "grunt-contrib-watch": "^0.6.1",
+    "jasmine-core": "^2.3.4",
+    "karma": "^0.12.32",
+    "karma-chrome-launcher": "^0.1.12",
+    "karma-jasmine": "^0.3.5",
+    "express": "^4.12.3"
+  },
+  "homepage": "https://github.com/lpavlovi/EngHack"
+}
