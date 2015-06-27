@@ -8,9 +8,19 @@
       * jQuery
       * moment
 -->
+  <link href = "css/reset.css" rel="stylesheet" type = "text/css"/>
+  <link href = "css/main.css" rel="stylesheet" type = "text/css"/>
+  <link href='http://fonts.googleapis.com/css?family=Arimo|Ubuntu|Audiowide|Roboto|Vollkorn' rel='stylesheet' type='text/css'>
+  <link href='http://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400' rel='stylesheet' type='text/css'>
   <script src="bower_components/angular/angular.js"></script>
   <script src="bower_components/jquery/dist/jquery.min.js"></script>
   <script src="bower_components/moment/moment.js"></script>
+
+  <!-- Calendar stuff -->
+  <link rel='stylesheet' href='../bower_components/fullcalendar/dist/fullcalendar.css' />
+  <script src='../bower_components/jquery/dist/jquery.min.js'></script>
+  <script src='../bower_components/moment/min/moment.min.js'></script>
+  <script src='../bower_components/fullcalendar/dist/fullcalendar.js'></script>
 <!-- Add:
       * app.js
 -->
@@ -20,15 +30,40 @@
   <script src="services/duration-factory.js"></script>
   <script src="services/term-service.js"></script>
 </head>
-<body ng-controller="rootController">
-  <p>
-  {{a}}
-  </p>
-  <p>
-  {{b}}
-  </p>
-  <p>
-  {{c}}
-  </p>
+
+<body>
+   <div id="mainWrapper">
+    <div id="hwrapper">
+    </div>
+
+    <div id="bwrapper">
+
+      <div id="settingsTab">
+      </div>
+
+      <div id="gridTab">
+        <div id='calendar'></div>
+      </div>
+
+    </div>
 </body>
+
+
+<script>
+  $(document).ready(function() {
+        $('#calendar').fullCalendar({
+            defaultView: 'agendaWeek',
+
+            views: {
+              agendaWeek : {
+                allDaySlot: false
+              }
+            }
+        })
+  });
+  document.getElementById('bwrapper').style.height = window.innerHeight-document.getElementById('hwrapper').offsetHeight+'px';
+  $('#calendar').fullCalendar('changeView', 'agendaWeek');
+
+</script>
+
 </html>
