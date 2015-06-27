@@ -3,7 +3,11 @@
     <label class="boxTitle">Add</label>
     <div class="timeDiv">
       <label class="chooseTime">Start Time</label>
-      <select class="selectTime"></select>
+      <select ng-model="sel" class="selectTime">
+        <option ng-repeat="t in selectTime">
+          {{t}}
+        </option>
+      </select>
     </div>
     <div class="timeDiv">
       <label class="chooseTime">End Time</label>

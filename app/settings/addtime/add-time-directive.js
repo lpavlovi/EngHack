@@ -9,6 +9,8 @@ link: function(scope) {
       {title:'EVENT ABC', start:moment().subtract(3, 'hours'), end:moment().subtract(2, 'hours')}
     );
   };
+  scope.selectTime = ['2:45','3:20'];
+  scope.sel = scope.selectTime[0];
 }
 };
 }]);
