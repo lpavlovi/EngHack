@@ -1,13 +1,28 @@
 <div>
   <div id="addItemBox">
     <label class="boxTitle">Add</label>
-    <label class="chooseTime">Start</label>
-    <label class="chooseTime">Finish</label>
-    <select class="selectTime"></select>
+    <div class="timeDiv">
+      <label class="chooseTime">Start Time</label>
+      <select class="selectTime"></select>
+    </div>
+    <div class="timeDiv">
+      <label class="chooseTime">End Time</label>
+      <select class="selectTime"></select>
+    </div>
+    <div class="timeDiv">
+      <label class="chooseTime">Start Day</label>
+      <select class="selectTime"></select>
+    </div>
+    <div class="timeDiv">
+      <label class="chooseTime">End Day</label>
+      <select class="selectTime"></select>
+    </div>
+    <div id="addButton" ng-click="addSomething()"><i class="fa fa-plus-square fa-3x"></i></div>
+    <div id="clearButton"><i class="fa fa-times fa-3x"></i></i></div>
   </div>
   <a href="/#/">
     <label id="backButton">BACK</label>
   </a>
-  <button ng-click="addSomething()">add</button>
+ 
 </div>
 
