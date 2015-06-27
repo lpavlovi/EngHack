@@ -53,6 +53,8 @@
   $(document).ready(function() {
         $('#calendar').fullCalendar({
             defaultView: 'agendaWeek',
+            height: 575,
+            timezone: 'local',
 
             views: {
               agendaWeek : {
@@ -62,7 +64,8 @@
         })
   });
   document.getElementById('bwrapper').style.height = window.innerHeight-document.getElementById('hwrapper').offsetHeight+'px';
-  $('#calendar').fullCalendar('changeView', 'agendaWeek');
+  
+  //$('#calendar').fullCalendar('option', 'height', 400);
 
 </script>
 

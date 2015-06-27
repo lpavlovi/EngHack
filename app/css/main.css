@@ -1,9 +1,9 @@
 html {
 }
 
-html::-webkit-scrollbar { 
+/*html::-webkit-scrollbar { 
     display: none;
-}
+}*/
 
 #mainWrapper {
 	width: 100%;
