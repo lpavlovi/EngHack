@@ -2,12 +2,15 @@
 angular.module('servicesModule')
   .factory('courseFactory', ['durationFactory', function(df) {
     return function Course(name, code, studySchedule) {
+      //possibly make the array global
+      var colorCodes = ['blue', 'red', 'green', 'yellow', 'orange', 'purple'];
+
       this.name = name;
       this.code = code;
       this.studySchedule;
       this.timeSpentThisWeek = moment.duration();
       this.timeSpentToday = moment.duration();
-      this.color 0x000000;
+      //this.color = colorCodes[];
       // if a variable is passed to the schedule
       if(!!studySchedule) {
         this.studySchedule = studySchedule;

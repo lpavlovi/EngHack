@@ -2,6 +2,7 @@
 angular.module('servicesModule')
   .service('inThisTerm', [function() {
     var masterArray = [];
+
     this.getCourses = function() {
       return masterArray;
     };

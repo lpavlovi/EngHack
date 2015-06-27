@@ -1,9 +1,9 @@
 html {
 }
 
-/*html::-webkit-scrollbar { 
+html::-webkit-scrollbar { 
     display: none;
-}*/
+}
 
 #mainWrapper {
 	width: 100%;
@@ -28,6 +28,103 @@ html {
   	top: 0px;
   	left: 25px;
   	border: 1px solid blue;
+  	font-family: Source Sans Pro, Roboto, Calibri, Arial;  
+}
+
+#coursePage {
+	width: 100%;
+	height: 100%;
+}
+
+#coursePageTitle{
+	padding: 10px;
+	width: 100%;
+	color: black;
+	font-family: Source Sans Pro;
+	font-size: 50px;
+	font-style: italic;
+	outline:none;
+}
+
+.courseCode{
+	width: 100%;
+	height: 10%;
+	border: 1px solid green;
+	margin: 10px 0;
+}
+
+.courseCodeColor {
+	width: 20px;
+	height: 20px;
+	border: 1px solid black;
+	border-radius: 5px;
+	margin: 10px;
+	background-color: black;
+	float: left;
+}
+
+.courseCodeLabel {
+	width: 250px;
+	font-size: 25px;
+}
+
+#statPage {
+	width: 100%;
+	height: 100%;
+	text-align: center
+}
+
+#courseTitle {
+	width: 90%;
+	font-size: 25px;
+	display: block;
+	margin: 10px auto;
+	border: 1px solid black;
+}
+
+#statBox {
+	width: 90%;
+	margin: 10px auto;
+	height: 35%;
+	border: 1px solid green;
+	text-align: left;
+}	
+
+.boxTitle {
+	display: block;
+	font-size: 25px;
+	margin:10px;
+	text-decoration: underline;
+}
+
+.statBoxLabel {
+	display: block;
+	font-size: 15px;
+	margin:10px;
+}
+
+#addItemBox {
+	width: 90%;
+	margin: 10px auto;
+	height: 35%;
+	border: 1px solid purple;
+	text-align: center;
+}
+
+.chooseTime {
+	display: block;
+	width: 40%;
+	font-size: 15px;
+	margin:10px;
+	float: left;
+}
+
+#backButton {
+	width: 90%;
+	margin: 10px auto;
+	padding: 10px 0;
+	display: block;
+	border: 1px solid black;
 }
 
 #gridTab {

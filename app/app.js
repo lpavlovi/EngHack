@@ -6,7 +6,10 @@ angular.module('rootModule', ['servicesModule'])
       // added a new course in this term
       var newDuration = new Duration('2015-06-26 10:00','2015-06-26 10:20');
       var newDuration2 = new Duration('2015-06-27 10:00','2015-06-27 10:40');
+      //Need to add a variable which keeps track of total number of items in masterArray
       itt.addCourse(new Course('Signals and Systems', 'ECE 207', [newDuration, newDuration2]));
+      itt.addCourse(new Course('Advanced Microprocessor Systems', 'ECE 224', [newDuration, newDuration2]));
+      itt.addCourse(new Course('Circuits', 'ECE 242', [newDuration, newDuration2]));
       itt.addCourse(new Course('Operating Systems', 'ECE 254', [newDuration, newDuration2]));
       /*
       $scope.a = 'Hello';

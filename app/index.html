@@ -39,7 +39,34 @@
     <div id="bwrapper">
 
       <div id="settingsTab">
-        <p ng-repeat="course in courses">{{course.timeSpentToday.asMinutes()}}</p>
+        <div id="coursePage">
+          <label id="coursePageTitle">Courses</label>
+          
+          <!--Either need to set div ids or someway to distinguish between a 'coursecode' div-->
+          <div class="courseCode" ng-repeat="course in courses" onclick="loadStatPage()">
+            <div class="courseCodeColor"></div>
+            <label class='courseCodeLabel'>{{course.code}}</label>
+          </div>
+        </div>
+
+        <div id="statPage">
+          <label id="courseTitle">Course Title</label>
+          <div id="statBox">
+            <label class="boxTitle">Stats</label>
+            <label class="statBoxLabel" id="timeSpentThisWeek">Time Spent This Week: </label>
+            <label class="statBoxLabel" id="timeSpentToday">Time Spent Today: </label>
+          </div>
+
+          <div id="addItemBox">
+            <label class="boxTitle">Add</label>
+            <label class="chooseTime">Start</label>
+            <label class="chooseTime">Finish</label>
+            <select class="selectTime"></select>
+          </div>
+
+          <label id="backButton" onclick="loadCoursePage()">BACK</label>
+
+        </div>
       </div>
 
       <div id="gridTab">
@@ -47,6 +74,7 @@
       </div>
 
     </div>
+  </div>
 </body>
 
 
@@ -66,7 +94,81 @@
 
         $('#calendar').fullCalendar('option', 'height', document.getElementById('gridTab').offsetHeight);
   });
+
+  var COURSE_PAGE = 0;
+  var STAT_PAGE = 1;
+
+  window.onload = function()
+  {
+    document.getElementById('coursePage').style.display = "";
+    document.getElementById('statPage').style.display = "none";
+  }
+
   document.getElementById('bwrapper').style.height = window.innerHeight-document.getElementById('hwrapper').offsetHeight+'px';
+
+  function loadStatPage(index)
+  {
+    /*var courseTitle = document.getElementById("courseTitle");
+    //set courseTitle name here
+
+    var statBox = document.createElement("div");
+    statBox.id = "statBox";
+
+    var timeSpentThisWeek = document.createElement("Label");
+    timeSpentThisWeek.id = "timeSpentThisWeek";
+    //set inner html 
+
+    var timeSpentToday = document.createElement("Label");
+    timeSpentToday.id = "timeSpentToday";
+    //set inner html 
+
+    var addItemBox = document.createElement("div");
+    //var */
+    document.getElementById('coursePage').style.display = "none";
+    document.getElementById('statPage').style.display = "";
+
+  }
+
+  function loadCoursePage()
+  {
+    document.getElementById('coursePage').style.display = "";
+    document.getElementById('statPage').style.display = "none";
+  }
+
+
+  //var coursePage = document.getElementById('coursePage');
+
+  //Need a global counter
+  /*for(var i=0; i<4; i++)
+  {
+    var courseCode = document.createElement("div");
+    courseCode.className = "courseCode";
+    courseCode.id = "courseCode"+i;
+    courseCode.onclick = loadStatPage(courseCode.id);
+
+    var courseCodeColor = document.createElement("div");
+    courseCodeColor.className = "courseCodeColor";
+    courseCodeColor.id = "courseCodeColor"+i;
+
+    var courseCodeLabel = document.createElement("label");
+    courseCodeLabel.className="courseCodeLabel";
+    courseCodeLabel.id = "courseCodeLabel"+i;
+    courseCodeLabel.innerHTML = "Blah";
+    //courseCodeLabel.innerHTML = "{{course.code}}";
+
+    courseCode.appendChild(courseCodeColor);
+    courseCode.appendChild(courseCodeLabel);
+    coursePage.appendChild(courseCode);
+  }
+
+  function loadStatPage(id)
+  {
+    alert(id);
+  }*/
+
+  
+
+  
 
 </script>
 
