@@ -31,7 +31,7 @@
   <script src="services/term-service.js"></script>
 </head>
 
-<body>
+<body ng-controller="rootController">
    <div id="mainWrapper">
     <div id="hwrapper">
     </div>
@@ -39,6 +39,7 @@
     <div id="bwrapper">
 
       <div id="settingsTab">
+        <p ng-repeat="course in courses">{{course.timeSpentToday.asMinutes()}}</p>
       </div>
 
       <div id="gridTab">

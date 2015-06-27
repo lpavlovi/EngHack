@@ -7,6 +7,7 @@ angular.module('servicesModule')
       this.studySchedule;
       this.timeSpentThisWeek = moment.duration();
       this.timeSpentToday = moment.duration();
+      this.color 0x000000;
       // if a variable is passed to the schedule
       if(!!studySchedule) {
         this.studySchedule = studySchedule;
