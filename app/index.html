@@ -4,30 +4,50 @@
   <meta http-equiv="content-type" content="text/html; charset=utf-8" />
   <title>Scheduling App</title>
 <!-- Add:
-      * angular.js
-      * jQuery
-      * moment
+      * reset.css
+      * main.css
+      * google fonts
+      * full calendar
 -->
   <link href = "css/reset.css" rel="stylesheet" type = "text/css"/>
   <link href = "css/main.css" rel="stylesheet" type = "text/css"/>
   <link href='http://fonts.googleapis.com/css?family=Arimo|Ubuntu|Audiowide|Roboto|Vollkorn' rel='stylesheet' type='text/css'>
   <link href='http://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400' rel='stylesheet' type='text/css'>
+  <link rel='stylesheet' href='bower_components/fullcalendar/dist/fullcalendar.css' />
+<!-- Add:
+      * angular.js
+      * jQuery
+      * moment
+-->
   <script src="bower_components/angular/angular.js"></script>
+  <script src="bower_components/angular-ui-router/release/angular-ui-router.js"></script>
   <script src="bower_components/jquery/dist/jquery.min.js"></script>
   <script src="bower_components/moment/moment.js"></script>
+  <script src='bower_components/fullcalendar/dist/fullcalendar.js'></script>
 
-  <!-- Calendar stuff -->
-  <link rel='stylesheet' href='../bower_components/fullcalendar/dist/fullcalendar.css' />
-  <script src='../bower_components/jquery/dist/jquery.min.js'></script>
-  <script src='../bower_components/moment/min/moment.min.js'></script>
-  <script src='../bower_components/fullcalendar/dist/fullcalendar.js'></script>
 <!-- Add:
       * app.js
+      * services-module.js
+      * course-factory.js
+      * duration-factory.js
+      * term-service.js
 -->
+  <!-- RootModule & Controller -->
   <script src="app.js"></script>
+  <!-- Modules -->
   <script src="services/services-module.js"></script>
+  <script src="settings/settings-module.js"></script>
+  <script src="calendar/calendar-module.js"></script>
+  <!-- Directives -->
+  <script src="calendar/calendar-directive.js"></script>
+  <script src="settings/stats/stats-directive.js"></script>
+  <script src="settings/addtime/add-time-directive.js"></script>
+  <!-- Controllers -->
+  <script src="settings/settings-controller.js"></script>
+  <!-- Factories -->
   <script src="services/course-factory.js"></script>
   <script src="services/duration-factory.js"></script>
+  <!-- Services -->
   <script src="services/term-service.js"></script>
 </head>
 
@@ -35,141 +55,12 @@
    <div id="mainWrapper">
     <div id="hwrapper">
     </div>
-
     <div id="bwrapper">
-
       <div id="settingsTab">
-        <div id="coursePage">
-          <label id="coursePageTitle">Courses</label>
-          
-          <!--Either need to set div ids or someway to distinguish between a 'coursecode' div-->
-          <div class="courseCode" ng-repeat="course in courses" onclick="loadStatPage()">
-            <div class="courseCodeColor"></div>
-            <label class='courseCodeLabel'>{{course.code}}</label>
-          </div>
-        </div>
-
-        <div id="statPage">
-          <label id="courseTitle">Course Title</label>
-          <div id="statBox">
-            <label class="boxTitle">Stats</label>
-            <label class="statBoxLabel" id="timeSpentThisWeek">Time Spent This Week: </label>
-            <label class="statBoxLabel" id="timeSpentToday">Time Spent Today: </label>
-          </div>
-
-          <div id="addItemBox">
-            <label class="boxTitle">Add</label>
-            <label class="chooseTime">Start</label>
-            <label class="chooseTime">Finish</label>
-            <select class="selectTime"></select>
-          </div>
-
-          <label id="backButton" onclick="loadCoursePage()">BACK</label>
-
-        </div>
+        <div ui-view></div>
       </div>
-
-      <div id="gridTab">
-        <div id='calendar'></div>
-      </div>
-
+      <calendar></calendar>
     </div>
   </div>
 </body>
-
-
-<script>
-
-  $(document).ready(function() {
-        $('#calendar').fullCalendar({
-            defaultView: 'agendaWeek',
-            timezone: 'local',
-
-            views: {
-              agendaWeek : {
-                allDaySlot: false
-              }
-            }
-        })
-
-        $('#calendar').fullCalendar('option', 'height', document.getElementById('gridTab').offsetHeight);
-  });
-
-  var COURSE_PAGE = 0;
-  var STAT_PAGE = 1;
-
-  window.onload = function()
-  {
-    document.getElementById('coursePage').style.display = "";
-    document.getElementById('statPage').style.display = "none";
-  }
-
-  document.getElementById('bwrapper').style.height = window.innerHeight-document.getElementById('hwrapper').offsetHeight+'px';
-
-  function loadStatPage(index)
-  {
-    /*var courseTitle = document.getElementById("courseTitle");
-    //set courseTitle name here
-
-    var statBox = document.createElement("div");
-    statBox.id = "statBox";
-
-    var timeSpentThisWeek = document.createElement("Label");
-    timeSpentThisWeek.id = "timeSpentThisWeek";
-    //set inner html 
-
-    var timeSpentToday = document.createElement("Label");
-    timeSpentToday.id = "timeSpentToday";
-    //set inner html 
-
-    var addItemBox = document.createElement("div");
-    //var */
-    document.getElementById('coursePage').style.display = "none";
-    document.getElementById('statPage').style.display = "";
-
-  }
-
-  function loadCoursePage()
-  {
-    document.getElementById('coursePage').style.display = "";
-    document.getElementById('statPage').style.display = "none";
-  }
-
-
-  //var coursePage = document.getElementById('coursePage');
-
-  //Need a global counter
-  /*for(var i=0; i<4; i++)
-  {
-    var courseCode = document.createElement("div");
-    courseCode.className = "courseCode";
-    courseCode.id = "courseCode"+i;
-    courseCode.onclick = loadStatPage(courseCode.id);
-
-    var courseCodeColor = document.createElement("div");
-    courseCodeColor.className = "courseCodeColor";
-    courseCodeColor.id = "courseCodeColor"+i;
-
-    var courseCodeLabel = document.createElement("label");
-    courseCodeLabel.className="courseCodeLabel";
-    courseCodeLabel.id = "courseCodeLabel"+i;
-    courseCodeLabel.innerHTML = "Blah";
-    //courseCodeLabel.innerHTML = "{{course.code}}";
-
-    courseCode.appendChild(courseCodeColor);
-    courseCode.appendChild(courseCodeLabel);
-    coursePage.appendChild(courseCode);
-  }
-
-  function loadStatPage(id)
-  {
-    alert(id);
-  }*/
-
-  
-
-  
-
-</script>
-
 </html>

@@ -1,27 +1,21 @@
 'use strict';
-angular.module('rootModule', ['servicesModule'])
+angular.module('rootModule', ['servicesModule', 'calendarModule', 'settingsModule', 'ui.router'])
   .controller('rootController', ['$scope', 'inThisTerm', 'courseFactory', 'durationFactory', function($scope, itt, Course, Duration) {
     // __INIT__
     function init() {
-      // added a new course in this term
-      var newDuration = new Duration('2015-06-26 10:00','2015-06-26 10:20');
-      var newDuration2 = new Duration('2015-06-27 10:00','2015-06-27 10:40');
-      //Need to add a variable which keeps track of total number of items in masterArray
-      itt.addCourse(new Course('Signals and Systems', 'ECE 207', [newDuration, newDuration2]));
-      itt.addCourse(new Course('Advanced Microprocessor Systems', 'ECE 224', [newDuration, newDuration2]));
-      itt.addCourse(new Course('Circuits', 'ECE 242', [newDuration, newDuration2]));
-      itt.addCourse(new Course('Operating Systems', 'ECE 254', [newDuration, newDuration2]));
-      /*
-      $scope.a = 'Hello';
-      $scope.b = newDuration.start.format("dddd, MMMM Do YYYY, h:mm:ss a");
-      $scope.c = newDuration.finish.format("dddd, MMMM Do YYYY, h:mm:ss a");
-      */
-      $scope.courses = itt.getCourses();
-      $scope.a = newDuration.duration.asMinutes();
-      $scope.b = itt.getCourses()[0].timeSpentThisWeek.asMinutes();
-      // $scope.c = newCourse.timeSpentToday.asMinutes();
+      document.getElementById('bwrapper').style.height = window.innerHeight-document.getElementById('hwrapper').offsetHeight+'px';
     }
-    init();
 
-  }]);
+    // initializes the view
+    init();
+  }])
+  .config(function($stateProvider, $urlRouterProvider) {
+    $stateProvider
+      .state('main', {
+        url: '/',
+        templateUrl: 'settings/stats/stats-view.html',
+        controller: 'settingsController'
+      });
+    $urlRouterProvider.otherwise('/');
+  });
 
