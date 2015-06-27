@@ -49,10 +49,10 @@
 
 
 <script>
+
   $(document).ready(function() {
         $('#calendar').fullCalendar({
             defaultView: 'agendaWeek',
-            height: 575,
             timezone: 'local',
 
             views: {
@@ -61,10 +61,10 @@
               }
             }
         })
+
+        $('#calendar').fullCalendar('option', 'height', document.getElementById('gridTab').offsetHeight);
   });
   document.getElementById('bwrapper').style.height = window.innerHeight-document.getElementById('hwrapper').offsetHeight+'px';
-  
-  //$('#calendar').fullCalendar('option', 'height', 400);
 
 </script>
 
