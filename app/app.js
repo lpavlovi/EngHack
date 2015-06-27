@@ -13,8 +13,12 @@ angular.module('rootModule', ['servicesModule', 'calendarModule', 'settingsModul
     $stateProvider
       .state('main', {
         url: '/',
-        templateUrl: 'settings/stats/stats-view.html',
+        templateUrl: 'settings/list/list-view.html',
         controller: 'settingsController'
+      })
+      .state('stats-view', {
+        url: '/stats',
+        templateUrl: 'settings/stats/stats-view.html'
       });
     $urlRouterProvider.otherwise('/');
   });
