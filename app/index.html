@@ -6,17 +6,28 @@
 <!-- Add:
       * angular.js
       * jQuery
+      * moment
 -->
   <script src="bower_components/angular/angular.js"></script>
   <script src="bower_components/jquery/dist/jquery.min.js"></script>
+  <script src="bower_components/moment/moment.js"></script>
 <!-- Add:
       * app.js
 -->
   <script src="app.js"></script>
+  <script src="services/services-module.js"></script>
+  <script src="services/course-factory.js"></script>
+  <script src="services/duration-factory.js"></script>
 </head>
-<body>
+<body ng-controller="rootController">
   <p>
-    Hello
+  {{a}}
+  </p>
+  <p>
+  {{b}}
+  </p>
+  <p>
+  {{c}}
   </p>
 </body>
 </html>
