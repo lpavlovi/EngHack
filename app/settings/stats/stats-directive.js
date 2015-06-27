@@ -3,8 +3,9 @@ angular.module('settingsModule')
     return {
       retrict: 'EA',
       templateUrl: 'settings/stats/stats-view.html',
-      link: function() {
+      link: function(scope) {
         /*console.log('hello - from the courseStats directive');*/ 
+        scope.course = itt.getSelectedCourse();
       }
     };
   });

@@ -1,5 +1,11 @@
 <!-- add stuff here -->
-<p>
-List View
-<a href="/#/stats">To Stats View</a>
-</p>
+<div>
+  <h1 style="font-size:40px;padding-left:6px;">List View</h1>
+  <ul style="font-size:24px">
+    <li ng-click="selectCourse($index)" ng-repeat="course in courseList">
+    <div class="list-of-courses" ng-style="course.color"></div>
+      {{course.name}}
+    </li>
+  </ul>
+  <a href="/#/stats">To Stats View</a>
+</div>

@@ -4,6 +4,12 @@ angular.module('rootModule', ['servicesModule', 'calendarModule', 'settingsModul
     // __INIT__
     function init() {
       document.getElementById('bwrapper').style.height = window.innerHeight-document.getElementById('hwrapper').offsetHeight+'px';
+      itt.setCourses([
+        new Course('Signals and Systems', 'ECE 207', '#3498db'),
+        new Course('Operating Systems', 'ECE 254', '#9b59b6'),
+        new Course('Circuits', 'ECE 242', '#f1c40f')
+      ]);
+
     }
 
     // initializes the view
@@ -18,7 +24,8 @@ angular.module('rootModule', ['servicesModule', 'calendarModule', 'settingsModul
       })
       .state('stats-view', {
         url: '/stats',
-        templateUrl: 'settings/stats/stats-view.html'
+        templateUrl: 'settings/stats/stats-view.html',
+        controller: 'statsController'
       });
     $urlRouterProvider.otherwise('/');
   });

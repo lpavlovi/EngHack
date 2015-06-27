@@ -2,6 +2,7 @@
 angular.module('servicesModule')
   .service('inThisTerm', [function() {
     var masterArray = [];
+    var selectedCourse;
     var timeSlotsAndStuff = [];
     this.getCourses = function() {
       return masterArray;
@@ -20,5 +21,11 @@ angular.module('servicesModule')
       timeSlotsAndStuff.push(x);
       $('#calendar').fullCalendar('removeEvents');
       $('#calendar').fullCalendar('addEventSource', timeSlotsAndStuff );	
+    };
+    this.selectCourse = function(i) {
+      selectedCourse = i;
+    };
+    this.getSelectedCourse = function() {
+      return masterArray[selectedCourse];
     };
   }]);
