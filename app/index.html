@@ -7,6 +7,10 @@
       * angular.js
       * jQuery
 -->
+  <link href = "css/reset.css" rel="stylesheet" type = "text/css"/>
+  <link href = "css/main.css" rel="stylesheet" type = "text/css"/>
+  <link href='http://fonts.googleapis.com/css?family=Arimo|Ubuntu|Audiowide|Roboto|Vollkorn' rel='stylesheet' type='text/css'>
+  <link href='http://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400' rel='stylesheet' type='text/css'>
   <script src="bower_components/angular/angular.js"></script>
   <script src="bower_components/jquery/dist/jquery.min.js"></script>
 <!-- Add:
@@ -14,9 +18,122 @@
 -->
   <script src="app.js"></script>
 </head>
+
 <body>
-  <p>
-    Hello
-  </p>
+  <div id="mainWrapper">
+    <div id="hwrapper">
+    </div>
+
+    <div id="bwrapper">
+
+      <div id="settingsTab">
+      </div>
+
+      <div id="gridTab">
+        <div id="dayOfWeek">
+        </div>
+
+        <div id="timeOfDay">
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+
 </body>
 </html>
+
+
+<script>
+    var dayOfWeek = [ 'Sunday' ,'Monday', 'Tuesday', "Wednesday", 'Thursday', 'Friday', 'Saturday'];
+
+    //set height of main body wrapper
+    document.getElementById('bwrapper').style.height = window.innerHeight-document.getElementById('hwrapper').offsetHeight+'px';
+
+    //Get height/width of gridtab - ask Luka how to dynamically get width/height
+    var gridWidth = document.getElementById('gridTab').offsetWidth; 
+    var gridHeight = document.getElementById('gridTab').offsetHeight; 
+
+
+    var dayOfWeekDiv = document.getElementById('dayOfWeek');
+    var dayOfWeekWidth = dayOfWeekDiv.offsetWidth;
+    
+    //Create day of week above chart
+    for(var i=0; i<dayOfWeek.length+1; i++)
+    {
+      var dayOfWeekSplit = document.createElement('div');
+      dayOfWeekSplit.className = "dayOfWeekSplit";
+      dayOfWeekSplit.id = "dayOfWeekSplit"+i;
+
+      var dayOfWeekSplitLabel = document.createElement('label');
+      dayOfWeekSplitLabel.className = "dayOfWeekSplitLabel";
+      dayOfWeekSplitLabel.id = "dayOfWeekSplitLabel";
+      if(i>0)
+        dayOfWeekSplitLabel.innerHTML = dayOfWeek[i-1];
+
+      dayOfWeekSplit.appendChild(dayOfWeekSplitLabel);
+      dayOfWeekDiv.appendChild(dayOfWeekSplit);
+
+      //Maybe add dates (month/day) later
+    }
+
+    var timeOfDay = document.getElementById('timeOfDay');
+    for(var i=0; i<8; i++)
+    {
+      var columnByDay = document.createElement("div");
+      columnByDay.className = "columnByDay";
+      columnByDay.id = "columnByDay"+i;
+
+      //if(i == 0)
+        //createHourColumn(columnByDay.id);
+
+      timeOfDay.appendChild(columnByDay);
+    }
+
+    function createHourColumn(columnDiv)
+    {
+      for(var i=0; i<24; i++)
+      {
+
+      }
+    }
+
+    /*function createHourColumn(mainGrid, )
+    {
+
+      for(var i=0; i<24; i++)
+      {
+        var theHour = document.createElement("div");
+        theHour.className = "theHour";
+        theHour.id = "theHour"+i;
+
+        var hoursOfDayLabel = document.createElement('label');
+        hoursOfDayLabel.className = "hoursOfDayLabel";
+        hoursOfDayLabel.id = "hoursOfDayLabel"+i;
+        hoursOfDayLabel.innerHTML = hour12(i);
+
+        theHour.appendChild(hoursOfDayLabel);
+        hoursOfDay.appendChild(theHour);
+      }
+    }*/
+
+
+    function hour12(value)
+    {
+      var returnValue;
+
+      if(value == 0)
+        returnValue = "12AM";
+      else if(value < 12 && value > 0)
+        returnValue = value%12+"AM";
+      else if(value == 12)
+        returnValue = "12PM";
+      else
+        returnValue = value%12+"PM";
+
+      return returnValue;
+    }  
+
+
+</script>
